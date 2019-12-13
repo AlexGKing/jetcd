@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright 2017 The jetcd authors
+    Copyright 2016-2019 The jetcd authors
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -16,14 +16,12 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>com.coreos</groupId>
+        <groupId>io.etcd</groupId>
         <artifactId>jetcd-parent</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.4.2-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -37,7 +35,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.coreos</groupId>
+            <groupId>io.etcd</groupId>
             <artifactId>jetcd-resolver</artifactId>
         </dependency>
         <dependency>
@@ -70,8 +68,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -93,7 +98,7 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>com/coreos/jetcd/api/**</exclude>
+                        <exclude>io/etcd/jetcd/api/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -116,8 +121,8 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}
                         </Bundle-SymbolicName>
-                        <Bundle-Name>CoreOS :: ${project.artifactId}</Bundle-Name>
-                        <Export-Package>com.coreos.jetcd.resolver.dnssrv.*;-noimport:=true
+                        <Bundle-Name>etcd :: ${project.artifactId}</Bundle-Name>
+                        <Export-Package>io.etcd.jetcd.resolver.dnssrv.*;-noimport:=true
                         </Export-Package>
                     </instructions>
                 </configuration>

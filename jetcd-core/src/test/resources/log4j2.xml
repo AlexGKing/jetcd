@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright 2017 The jetcd authors
+    Copyright 2016-2019 The jetcd authors
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@
     <!-- package loggers -->
     <Logger name="org.testcontainers" level="INFO"/>
     <Logger name="🐳 [gcr.io/etcd-development/etcd:v3.3]" level="WARN"/>
-    
-    <Logger name="com.coreos.jetcd.internal.infrastructure" level="INFO"/>
+    <Logger name="🐳 [gcr.io/etcd-development/etcd:v3.4]" level="WARN"/>
+    <Logger name="io.etcd.jetcd.internal.infrastructure" level="INFO"/>
 
     <!-- main logger -->
     <Root level="INFO">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright 2017 The jetcd authors
+    Copyright 2016-2019 The jetcd authors
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -16,14 +16,12 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>com.coreos</groupId>
+        <groupId>io.etcd</groupId>
         <artifactId>jetcd-osgi-parent</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.4.2-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -48,18 +46,33 @@
             <version>${osgi.ds.version}</version>
         </dependency>
 
-        <!-- jetcd -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>jetcd-osgi</artifactId>
-        </dependency>
-
         <!-- test -->
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jetcd-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jetcd-resolver</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jetcd-launcher</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.karaf.itests</groupId>
-            <artifactId>itests</artifactId>
+            <artifactId>common</artifactId>
             <version>${karaf.version}</version>
-            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.karaf.itests</groupId>
+            <artifactId>tests</artifactId>
+            <version>${karaf.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -83,7 +96,6 @@
             <version>${pax.exam.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
             <artifactId>pax-exam-junit4</artifactId>
@@ -94,7 +106,7 @@
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-atinject_1.0_spec</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -164,7 +176,7 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>CoreOS :: ${project.artifactId}</Bundle-Name>
-                        <Export-Package>com.coreos.jetcd.osgi.karaf.*;-noimport:=true</Export-Package>
+                        <Export-Package>io.etcd.jetcd.osgi.karaf.*;-noimport:=true</Export-Package>
                     </instructions>
                 </configuration>
             </plugin>
@@ -172,11 +184,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <systemPropertyVariables>
-                        <features.xml>${project.build.directory}/classes/features.xml</features.xml>
-                    </systemPropertyVariables>
-                </configuration>
             </plugin>
 
         </plugins>

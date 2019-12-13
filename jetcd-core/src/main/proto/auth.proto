@@ -1,5 +1,5 @@
 //
-// Copyright 2017 The jetcd authors
+// Copyright 2016-2019 The jetcd authors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ syntax = "proto3";
 package authpb;
 
 option java_multiple_files = true;
-option java_package = "com.coreos.jetcd.api";
+option java_package = "io.etcd.jetcd.api";
 
 // User is a single entry in the bucket authUsers
 message User {
